@@ -2,5 +2,15 @@ body{
 	width: 100%;
     height: auto;
     color: white;
-	background: #2e3d49; //url(../img/header-image.jpeg) no-repeat scroll;
+	background: #2e3d49; 
+
+}
+
+.intro {
+	height: 100vh;
+	background: url('../img/intro.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
