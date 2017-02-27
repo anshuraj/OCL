@@ -1,17 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to Online Course Library</title>
-
-	  <!-- Bootstrap -->
-    <link href="<?php echo site_url("public/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet" type="text/css" />
-    <!-- Custom css -->
-    <link href="<?php echo site_url("public/css/style.css"); ?>" rel="stylesheet" type="text/css" />
-
-	
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -21,9 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="navbar-right">
         <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
+          <li><a href="<?php echo site_url(); ?>">Home</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="#">Catalog</a></li>
+          <li><a href="<?php echo site_url("explore"); ?>">Catalog</a></li>
           <li><a href="<?php echo site_url("account"); ?>">Log In</a></li>
           <li id="register"><a href="<?php echo site_url("account"); ?>" style="color: white; ">Register</a></li>
         </ul>
@@ -31,12 +17,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </nav>
 
-	<div class='container'>
-	  <div class="">
+	<div class='intro'>
+	  <div class="container">
 		  <h2>Welcome to Online Course Library</h2>
 
       <button class="btn btn-primary">Explore</button>
     </div>
+
 	</div>
 
 
