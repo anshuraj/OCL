@@ -1,4 +1,3 @@
-    <link href="<?php echo site_url("public/css/style.css"); ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -20,9 +19,20 @@
 
 	<div class='intro'>
 	  <div class="container">
-		  <h2>Welcome to Online Course Library</h2>
+		  <h2>Course Available</h2>
+      <div class="row">
 
-      <button class="btn btn-primary">Explore</button>
+    <?php for ($i=0; $i < 10 ; $i++) { 
+      echo '<div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Course Name</div>
+        <div class="panel-body">Course Description</div>
+      </div>
+    </div>' ;
+    } ?>
+
+  </div>
+
     </div>
 
 	</div>
