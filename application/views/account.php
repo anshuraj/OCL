@@ -44,6 +44,7 @@
           <div class="field-wrap">
             <input type="password"required autocomplete="off" placeholder="Password" name="password" />
           </div>
+            <input type="hidden" name="user_type" value="1" />
           
           <button type="submit" class="button button-block"/>Get Started</button>
           
@@ -63,7 +64,6 @@
           <div class="field-wrap">
             <input type="password"required autocomplete="off" placeholder="Password" name="password" />
           </div>
-          
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
           <button class="button button-block"/>Log In</button>
