@@ -49,7 +49,8 @@ class Account extends CI_Controller {
 			$this->session->set_userdata($data);
 				$this->output->set_output(json_encode([
 		            'status'=>1,
-		            'message'=> 'loggedin'
+		            'message'=> 'loggedin',
+		            'data'=> $res[0]
 		        ]));
 			} else {
 				$this->output->set_output(json_encode([
@@ -64,6 +65,7 @@ class Account extends CI_Controller {
         $this->form_validation->set_rules('name', 'name', 'trim|required');
         $this->form_validation->set_rules('email', 'Email address', 'trim|required|valid_email|is_unique[users.email]');
         $this->form_validation->set_rules('password', 'password', 'trim|required');
+        $this->form_validation->set_rules('user_type', 'user_type', 'required');
 
         if($this->form_validation->run()===FALSE){
                 $this->output->set_output(json_encode([
@@ -77,8 +79,9 @@ class Account extends CI_Controller {
 		$name = $this->input->post('name');
 		$email = $this->input->post('email');
 		$pass = $this->input->post('password');
+		$user_type = $this->input->post('user_type');
 
-		$data = ['name'=> $name, 'email'=> $email, 'password'=> $pass];
+		$data = ['name'=> $name, 'email'=> $email, 'password'=> $pass, 'user_type'=> $user_type];
 
 		$res = $this->account_model->signup($data);
 

@@ -10,7 +10,7 @@ class Account_model extends CI_Model {
 
         $query = $this->db->get_where('users', $data);
         if($query->num_rows()>0){
-            return TRUE;
+            return $query->row()->user_type;
         } else {
             return FALSE;
         }
