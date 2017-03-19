@@ -50,7 +50,7 @@ class Account extends CI_Controller {
 				$this->output->set_output(json_encode([
 		            'status'=>1,
 		            'message'=> 'loggedin',
-		            'data'=> $res[0]
+		            'user_type'=> $res[0]
 		        ]));
 			} else {
 				$this->output->set_output(json_encode([

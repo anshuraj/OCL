@@ -60,7 +60,9 @@ $route['dashboard'] = 'Dashboard';
 $route['classroom'] = 'Classroom';
 
 $route['teacher'] = 'teacher/dashboard';
-$route['teacher/update'] = 'teacher/teacher';
+$route['teacher/create'] = 'teacher/create';
+$route['teacher/createCourse'] = 'teacher/create/createCourse';
+$route['teacher/update/:num'] = 'teacher/update';
 
 
 
