@@ -15,5 +15,16 @@ class Course_model extends CI_Model {
         return FALSE;
         
     }
+
+    public function getCourses(){
+
+        $query = $this->db->get('courses');
+        if($query->num_rows()>0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+
+    }
     
 }

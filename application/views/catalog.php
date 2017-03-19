@@ -22,11 +22,11 @@
 		  <h2>Course Available</h2>
       <div class="row">
 
-    <?php for ($i=0; $i < 10 ; $i++) { 
+    <?php for ($i=0; $i < sizeof($courses) ; $i++) { 
       echo '<div class="col-md-3">
       <div class="panel panel-default">
-        <div class="panel-heading">Course Name</div>
-        <div class="panel-body">Course Description</div>
+        <div class="panel-heading">'. $courses[$i]['name'] .'</div>
+        <div class="panel-body">'. $courses[$i]['description'] .'</div>
       </div>
     </div>' ;
     } ?>
