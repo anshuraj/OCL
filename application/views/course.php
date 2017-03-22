@@ -16,17 +16,18 @@
 	      </div>
 	    </div>
   	</nav>
-  	
+  	<?php echo print_r($data); ?>
 	<div class="container">
-		<h2>Course Name</h2>
+		<h2><?php echo $data['course_name']; ?></h2>
 		<br>
-		By Teacher Name
-		<br>
+		By <?php echo $data['teacher_name']; ?>
+		<br><br>
 		<div class="row">
 			<div class="col-md-8">
 				Course Description
+				<br>
 				<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sollicitudin, augue in fringilla sollicitudin, lorem justo aliquam tortor, quis vestibulum diam justo eget felis. Nulla at facilisis dui. Phasellus metus nisi, pretium id tristique vel, ultricies vel quam. Integer non felis erat. Ut laoreet lorem eget est imperdiet, eu condimentum dolor placerat. Duis vulputate tellus odio, vitae volutpat dui consectetur nec. Praesent orci ex, mattis sit amet nulla sed, scelerisque eleifend augue. Vestibulum ornare elementum finibus. Donec sed lectus lacinia, sollicitudin dolor in, sollicitudin ex. Aliquam erat volutpat. Donec gravida, libero malesuada varius pulvinar, massa odio venenatis urna, in malesuada turpis libero vitae metus. Nunc porta ex magna, a hendrerit mi porta et.
+				<?php echo $data['description']; ?>
 				</p>
 			</div>
 			<div class="col-md-4">

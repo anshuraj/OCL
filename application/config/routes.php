@@ -55,7 +55,7 @@ $route['account/signup'] = 'Account/signup';
 $route['account/login'] = 'Account/login';
 $route['account/logout'] = 'Account/logout';
 $route['catalog'] = 'Catalog';
-$route['course'] = 'Course';
+$route['course/(:num)'] = 'Course/index/$1';
 $route['dashboard'] = 'Dashboard';
 $route['classroom'] = 'Classroom';
 
