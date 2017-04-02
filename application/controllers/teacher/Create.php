@@ -28,7 +28,6 @@ class Create extends CI_Controller {
 
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('description', 'Description', 'trim|required');
-		$this->form_validation->set_rules('teacher_id', 'Teacher id', 'trim|required');
 
         if($this->form_validation->run()===FALSE){
                 $this->output->set_output(json_encode([
@@ -40,7 +39,7 @@ class Create extends CI_Controller {
 
 		$name = $this->input->post('name');
 		$description = $this->input->post('description');
-		$teacher_id = $this->input->post('teacher_id');
+		$teacher_id = $this->session->userdata('user_id');
 
 		$data = ['name'=> $name, 'teacher_id'=>$teacher_id, 'description'=> $description];
 

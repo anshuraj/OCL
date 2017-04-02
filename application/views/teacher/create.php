@@ -5,7 +5,6 @@
 		<div class="well col-md-4 col-md-offset-4">
 		<h2>Create a course</h2><br>
 			<form action="<?php echo site_url("teacher/createCourse"); ?>" method="post">
-				<input type="hidden" name="teacher_id" value="<?php echo '2'; ?>">
 				<div class="form-group">
 				  <label for="name">Course Name</label>
 				  <input type="text" name="name" class="form-control"  placeholder="Course name" id="name">
