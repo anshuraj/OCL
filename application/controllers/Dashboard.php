@@ -14,14 +14,16 @@ class Dashboard extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('form_validation');
         $this->load->library('session');
-		//$this->load->model('profile_model');
+        $this->load->model('course_model');
 
 	}
 
 
 	public function index(){
 
+		$this->data['courses'] = $this->course_model->getEnrolledCourses($this->session->userdata('user_id')) ;
+
 		$this->load->view('header');
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $this->data);
 	}
 }

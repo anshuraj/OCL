@@ -72,4 +72,18 @@ class Course_model extends CI_Model {
             return FALSE;
         }
     }
+
+    public function getEnrolledCourses($id){
+
+        $sql = 'SELECT courses.id, courses.description, courses.name from courses JOIN enrollment on courses.id = enrollment.course_id where enrollment.student_id = ?';
+
+        $query = $this->db->query($sql, $id);
+        
+        if($query->num_rows()>0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+
+    }
 }
