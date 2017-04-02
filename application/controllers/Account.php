@@ -27,7 +27,7 @@ class Account extends CI_Controller {
 
 	public function logout() {
 
-		if($this->session->userdata('username')){
+		if($this->session->userdata('user_id')){
 
 			$this->session->sess_destroy();
 			redirect(site_url(), 'refresh');
@@ -46,12 +46,15 @@ class Account extends CI_Controller {
 		$res = $this->account_model->login($data);
 
 		if($res == TRUE){
-			$this->session->set_userdata($data);
+
 				$this->output->set_output(json_encode([
 		            'status'=>1,
 		            'message'=> 'loggedin',
-		            'user_type'=> $res[0]
+		            'user_type'=> $res['user_type']
 		        ]));
+		        $session_data = array( 'user_id'=> $res['user_id'], 'email'=> $email, 'user_type'=> $res['user_type'] );
+				$this->session->set_userdata($session_data);
+
 			} else {
 				$this->output->set_output(json_encode([
 		            'status'=> 0,
