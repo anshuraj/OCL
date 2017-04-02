@@ -56,14 +56,15 @@ $route['account/login'] = 'Account/login';
 $route['account/logout'] = 'Account/logout';
 $route['catalog'] = 'Catalog';
 $route['course/(:num)'] = 'Course/index/$1';
+$route['course/enroll'] = 'Course/enroll';
 $route['dashboard'] = 'Dashboard';
 $route['classroom'] = 'Classroom';
 
 $route['teacher'] = 'teacher/dashboard';
 $route['teacher/create'] = 'teacher/create';
 $route['teacher/createCourse'] = 'teacher/create/createCourse';
-$route['teacher/update/:num'] = 'teacher/update';
-
+$route['teacher/update/(:num)'] = 'teacher/update/index/$1';
+$route['teacher/update/upload'] = 'teacher/update/upload';
 
 
 $route['404_override'] = '';

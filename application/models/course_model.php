@@ -39,5 +39,37 @@ class Course_model extends CI_Model {
             return FALSE;
         }
     }
+
+    public function createLesson($data){
+
+        $query = $this->db->insert('lesson', $data);
+        
+        if($this->db->insert_id()){
+
+            return $this->db->get_where('lesson', array('id'=>$this->db->insert_id()))->result_array();
+        }
+        return FALSE;
+    }
     
+    public function enroll($data){
+
+        $query = $this->db->insert('enrollment', $data);
+        
+        if($this->db->insert_id()){
+
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    public function checkEnrollment($data){
+
+        $query = $this->db->get_where('enrollment', $data);
+
+        if($query->num_rows()>0){
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }
