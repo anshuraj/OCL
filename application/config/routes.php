@@ -58,7 +58,7 @@ $route['catalog'] = 'Catalog';
 $route['course/(:num)'] = 'Course/index/$1';
 $route['course/enroll'] = 'Course/enroll';
 $route['dashboard'] = 'Dashboard';
-$route['classroom'] = 'Classroom';
+$route['classroom/(:num)'] = 'Classroom/index/$1';
 
 $route['teacher'] = 'teacher/dashboard';
 $route['teacher/create'] = 'teacher/create';
