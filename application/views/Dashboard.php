@@ -1,5 +1,5 @@
 </head>
-<body><?php print_r($courses) ; ?>
+<body>
 <div class="container">
 	<h3>Enrolled Courses</h3>
 	<div class="row">
