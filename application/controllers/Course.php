@@ -3,19 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Course extends CI_Controller {
 
-	public function index($id=Null)
-	{
-		$this->load->library('session');
-		$this->load->helper('url');
-		$this->load->database();
+	public function index($id=Null){
+		
 		$this->load->model('course_model');
 
+		$this->data['custom_css'] = array();
 		$this->data['data'] = $this->course_model->getCourseData($id);
 		$this->data['user_id'] = $this->session->userdata('user_id');
 
 		$this->data['check'] =  $this->course_model->checkEnrollment(array('course_id'=> $id, 'student_id'=> $this->session->userdata('user_id'))) ;
 			
-		$this->load->view('header');
+		$this->load->view('header', $this->data);
 		$this->load->view('Course', $this->data);
 	}
 

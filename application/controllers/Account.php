@@ -10,10 +10,6 @@ class Account extends CI_Controller {
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");   
         $this->output->set_content_type('application_json');     
-        $this->load->database();
-        $this->load->helper('url');
-        $this->load->library('form_validation');
-        $this->load->library('session');
 		$this->load->model('account_model');
 
 	}
@@ -21,7 +17,9 @@ class Account extends CI_Controller {
 
 	public function index(){
 
-		$this->load->view('header');
+		$this->data['custom_css'] = array('account_style.css');
+		
+		$this->load->view('header', $this->data);
 		$this->load->view('account');
 	}
 
@@ -52,7 +50,7 @@ class Account extends CI_Controller {
 		            'message'=> 'loggedin',
 		            'user_type'=> $res['user_type']
 		        ]));
-		        $session_data = array( 'user_id'=> $res['user_id'], 'email'=> $email, 'user_type'=> $res['user_type'] );
+		        $session_data = array( 'user_id'=> $res['user_id'], 'email'=> $email, 'user_type'=> $res['user_type'], 'name'=> $res['name'] );
 				$this->session->set_userdata($session_data);
 
 			} else {

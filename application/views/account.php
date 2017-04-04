@@ -1,23 +1,3 @@
-<!-- Custom css -->
-<link href="<?php echo site_url("public/css/account_style.css"); ?>" rel="stylesheet" type="text/css" />
-
-</head>
-<body>
-	<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">OCL</a>
-    </div>
-    <div class="navbar-right">
-    <ul class="nav navbar-nav">
-      <li><a href="<?php echo site_url(); ?>">Home</a></li>
-      <li><a href="<?php echo site_url("catalog"); ?>">Catalog</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
-    </div>
-  </div>
-
-</nav>
 <div class='container'>
 	  
   <div class="form">

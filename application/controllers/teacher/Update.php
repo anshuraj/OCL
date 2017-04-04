@@ -7,21 +7,20 @@ class Update extends CI_Controller {
 	{
 		parent::__construct();
 
-        // $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
-        // $this->output->set_header("Pragma: no-cache");   
+        $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
+        $this->output->set_header("Pragma: no-cache");   
         $this->output->set_content_type('application_json');     
-        $this->load->database();
        
 		$this->load->model('course_model');
 
 	}
 
-	public function index($id=Null)
-	{
-		$this->load->helper('url');
+	public function index($id=Null){
 
 		$this->data['course_id'] = $id;	
-		$this->load->view('header');
+		$this->data['custom_css'] = array();
+
+		$this->load->view('header', $this->data);
 		$this->load->view('teacher/update', $this->data);
 	}
 
@@ -37,9 +36,6 @@ class Update extends CI_Controller {
             return;
         }
 
-		//print_r($_FILES);
-		//print_r($_POST);
-		//print_r($this->input->post());
 		$name =  $this->input->post('l_name');
 		$desc =  $this->input->post('desc');
 		$course_id = $this->input->post('course_id');

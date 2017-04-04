@@ -1,23 +1,4 @@
-</head>
-<body>
-	<nav class="navbar navbar-default">
-	    <div class="container">
-	      <div class="navbar-header">
-	        <a class="navbar-brand" href="#">OCL</a>
-	      </div>
-	      <div class="navbar-right">
-	        <ul class="nav navbar-nav">
-	          <li><a href="<?php echo site_url(); ?>">Home</a></li>
-	          <li><a href="#">About</a></li>
-	          <li><a href="<?php echo site_url("catalog"); ?>">Catalog</a></li>
-	          <li><a href="<?php echo site_url("account"); ?>">Log In</a></li>
-	          <li id="register"><a href="<?php echo site_url("account"); ?>" style="color: white; ">Register</a></li>
-	        </ul>
-	      </div>
-	    </div>
-  	</nav>
-  	
-	<div class="container">
+<div class="container">
 		<h2>Course Name</h2>
 		
 		<div class="row">

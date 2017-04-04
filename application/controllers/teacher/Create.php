@@ -9,18 +9,17 @@ class Create extends CI_Controller {
 
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");   
-        $this->output->set_content_type('application_json');     
-        $this->load->database();
-        $this->load->helper('url');
-        $this->load->library('form_validation');
-        $this->load->library('session');
+        $this->output->set_content_type('application_json'); 
+            
 		$this->load->model('course_model');
 
 	}
 
-	public function index()
-	{
-		$this->load->view('header');
+	public function index(){
+
+		$this->data['custom_css'] = array();
+
+		$this->load->view('header', $this->data);
 		$this->load->view('teacher/create');
 	}
 
