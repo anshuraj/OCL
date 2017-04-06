@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">OCL</a>
+        <a class="navbar-brand" href="<?php echo site_url(); ?>">OCL</a>
       </div>
       <div class="navbar-right">
         <ul class="nav navbar-nav">
@@ -25,7 +25,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li><a href="#">About</a></li>
           <li><a href="<?php echo site_url("catalog"); ?>">Catalog</a></li>
           <?php if ($this->session->userdata('user_id')){
-            echo '<li><a href="#">'. $this->session->userdata('name') .'</a></li>';
+            echo '<div class="dropdown">
+                    <button class="dropbtn"><small><span class="glyphicon glyphicon-user"></span></small>  '. $this->session->userdata('name') .'</button>
+                    <div class="dropdown-content">
+                      <a href="#">Profile</a>
+                      <a href="'.site_url('account/logout').'">Logout</a>
+                    </div>
+                  </div>';
           } else { 
               echo '<li><a href="' . site_url("account") . '">Log In</a></li>' ;
               echo '<li id="register"><a href="' . site_url("account") . '" style="color: white; ">Register</a></li>';

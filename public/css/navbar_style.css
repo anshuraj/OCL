@@ -1,6 +1,6 @@
 .navbar {
 	background-color: white;
-	padding: 10px;
+	//padding: 10px;
 	margin-bottom: 0px;
 }
 
@@ -27,7 +27,47 @@
 }
 
 nav li:hover {
-	background: grey;
+	background: #f1f1f1;
 	transition:all 1s;
    -webkit-transition:all 1s;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: black;
+    padding: 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #f1f1f1;
 }
