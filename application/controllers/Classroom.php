@@ -22,8 +22,14 @@ class Classroom extends CI_Controller {
 		$this->data['lesson'] = $this->classroom_model->getLesson($cid);
 		$this->data['course'] = $this->course_model->getCourseData($cid);
 		$this->data['lid'] = $lid;
-
-		$this->load->view('header', $this->data);
-		$this->load->view('Classroom', $this->data);
+		
+		if($this->session->userdata('user_id')){
+			$this->load->view('header', $this->data);
+			$this->load->view('Classroom', $this->data);
+		} else {
+			header('Refresh:3;'. site_url('account'));
+			echo 'Please Login to continue. Redirecting...';
+			exit();
+		}
 	}
 }

@@ -19,8 +19,15 @@ class Create extends CI_Controller {
 
 		$this->data['custom_css'] = array();
 
-		$this->load->view('header', $this->data);
-		$this->load->view('teacher/create');
+		if($this->session->userdata('user_id')){
+
+			$this->load->view('header', $this->data);
+			$this->load->view('teacher/create');
+		} else {
+			header('Refresh:3;'. site_url('account'));
+			echo 'Please Login to continue. Redirecting...';
+			exit();
+		}
 	}
 
 	public function createCourse(){

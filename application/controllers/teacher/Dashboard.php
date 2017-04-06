@@ -10,7 +10,14 @@ class Dashboard extends CI_Controller {
 		$this->data['courses'] = $this->teacher_model->getCourses($this->session->userdata('user_id'));
 		$this->data['custom_css'] = array();
 
-		$this->load->view('header', $this->data);
-		$this->load->view('teacher/dashboard', $this->data);
+		if($this->session->userdata('user_id')){
+
+			$this->load->view('header', $this->data);
+			$this->load->view('teacher/dashboard', $this->data);
+		} else {
+			header('Refresh:3;'. site_url('account'));
+			echo 'Please Login to continue. Redirecting...';
+			exit();
+		}
 	}
 }

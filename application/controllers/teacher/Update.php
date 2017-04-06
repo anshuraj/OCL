@@ -20,8 +20,15 @@ class Update extends CI_Controller {
 		$this->data['course_id'] = $id;	
 		$this->data['custom_css'] = array();
 
-		$this->load->view('header', $this->data);
-		$this->load->view('teacher/update', $this->data);
+		if($this->session->userdata('user_id')){
+
+			$this->load->view('header', $this->data);
+			$this->load->view('teacher/update', $this->data);
+		} else {
+			header('Refresh:3;'. site_url('account'));
+			echo 'Please Login to continue. Redirecting...';
+			exit();
+		}
 	}
 
 	public function upload(){
