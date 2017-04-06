@@ -52,9 +52,9 @@
 
         </div>
         
-      </div><!-- tab-content -->
+      </div>
       
-</div> <!-- /form -->
+</div>
 </div>
 <script src='<?php echo site_url("public/bootstrap/js/jquery.js"); ?>'></script>
 <script src="<?php echo site_url("public/js/index.js"); ?>"></script>
@@ -81,11 +81,14 @@
 
                   window.location.href = "<?php echo site_url("teacher/dashboard"); ?>";
 
+                } else if(response.status == 0){
+
+                  alert('Incorrect email or password!');
                 }
-            } // end of ajax success function
-        }); // end of ajax
+            } 
+        });
     });
-  }); // end of login-form submit  
+  });   
 
   $(function () {
     $('#signup-form').submit(function (e) {
@@ -100,10 +103,10 @@
             success: function (response) {
                 console.log(response);
                 
-            } // end of ajax success function
-        }); // end of ajax
+            } 
+        }); 
     });
-  }); // end of submit-form submit  
+  }); 
 
 </script>
 
