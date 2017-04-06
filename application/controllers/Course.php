@@ -5,10 +5,12 @@ class Course extends CI_Controller {
 
 	public function index($id=Null){
 		
+		$this->load->model('classroom_model');
 		$this->load->model('course_model');
 
 		$this->data['custom_css'] = array();
 		$this->data['data'] = $this->course_model->getCourseData($id);
+		$this->data['lesson'] = $this->classroom_model->getLesson($id);
 		$this->data['user_id'] = $this->session->userdata('user_id');
 
 		$this->data['check'] =  $this->course_model->checkEnrollment(array('course_id'=> $id, 'student_id'=> $this->session->userdata('user_id'))) ;
@@ -19,7 +21,6 @@ class Course extends CI_Controller {
 
 	public function enroll(){
 
-		$this->load->database();
 		$this->load->model('course_model');
 
 		$course_id = $this->input->post('course_id');

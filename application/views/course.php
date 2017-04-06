@@ -14,6 +14,13 @@
 			<div class="col-md-4">
 				<div class="panel panel-default">
 			        <div class="panel-body">Introduction Video</div>
+			        <div class="panel-body">
+			        	<video width="320" height="240" controls>
+						  <?php 
+						  	echo '<source src="'. site_url('uploads/'.$lesson[0]['content']) .'" type="video/mp4">'
+						  ?>
+						</video>
+					</div>
 			    </div>
 				<button class="btn btn-primary" id="enroll-btn" onclick="enroll()" <?php if($check == 0){
 					echo ">Register";
