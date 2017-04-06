@@ -38,11 +38,12 @@
 			type: 'POST',
 			data: postData,
 			success: function(response){
-				console.log("success");
 				var response = JSON.parse(response);
 				if(response.status == 1){
 					$("#enroll-btn").prop('disabled', true);
 					$("#enroll-btn").text("Registered");
+				} else if(response.status == 0){
+					alert(response.message);
 				}
 			}
 		});

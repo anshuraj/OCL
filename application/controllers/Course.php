@@ -21,26 +21,34 @@ class Course extends CI_Controller {
 
 	public function enroll(){
 
-		$this->load->model('course_model');
+		if($this->session->userdata('user_id')){
 
-		$course_id = $this->input->post('course_id');
-		$user_id = $this->session->userdata('user_id');
-		
-		$data = array('course_id'=> $course_id, 'student_id'=> $user_id);
+			$this->load->model('course_model');
 
-		$res = $this->course_model->enroll($data);
+			$course_id = $this->input->post('course_id');
+			$user_id = $this->session->userdata('user_id');
+			
+			$data = array('course_id'=> $course_id, 'student_id'=> $user_id);
 
-		if($res == TRUE){
-			$this->session->set_userdata($data);
-				$this->output->set_output(json_encode([
-		            'status'=>1,
-		            'message'=> 'Successfull'
-		        ]));
+			$res = $this->course_model->enroll($data);
+
+			if($res == TRUE){
+				$this->session->set_userdata($data);
+					$this->output->set_output(json_encode([
+			            'status'=>1,
+			            'message'=> 'Successfull'
+			        ]));
+			} else {
+					$this->output->set_output(json_encode([
+			            'status'=> 0,
+			            'message'=> 'Error saving data'
+			        ]));
+		    }
 		} else {
-				$this->output->set_output(json_encode([
-		            'status'=> 0,
-		            'message'=> 'Error saving data'
-		        ]));
-	    }
+			$this->output->set_output(json_encode([
+			            'status'=> 0,
+			            'message'=> 'Please login to continue'
+			        ]));
+		}
 	}
 }
