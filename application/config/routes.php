@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -66,6 +66,11 @@ $route['teacher/createCourse'] = 'teacher/create/createCourse';
 $route['teacher/update/(:num)'] = 'teacher/update/index/$1';
 $route['teacher/update/upload'] = 'teacher/update/upload';
 
+$route['forum'] = 'forum/discuss';
+$route['forum/thread/reply'] = 'forum/thread/reply';
+$route['forum/thread/(:num)'] = 'forum/thread/index/$1';
+$route['forum/new'] = 'forum/create';
+$route['forum/new/createthread'] = 'forum/create/createThread';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
