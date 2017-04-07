@@ -8,6 +8,6 @@ class Homepage extends CI_Controller {
 		$this->data['custom_css'] = array('style.css');
 
 		$this->load->view('header', $this->data);
-		$this->load->view('Homepage');
+		$this->load->view('homepage');
 	}
 }

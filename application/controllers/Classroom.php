@@ -25,7 +25,7 @@ class Classroom extends CI_Controller {
 		
 		if($this->session->userdata('user_id')){
 			$this->load->view('header', $this->data);
-			$this->load->view('Classroom', $this->data);
+			$this->load->view('classroom', $this->data);
 		} else {
 			header('Refresh:3;'. site_url('account'));
 			echo 'Please Login to continue. Redirecting...';

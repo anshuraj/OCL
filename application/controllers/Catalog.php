@@ -12,6 +12,6 @@ class Catalog extends CI_Controller {
 		$this->data['courses'] = $this->course_model->getCourses();
 
 		$this->load->view('header', $this->data);
-		$this->load->view('Catalog', $this->data);
+		$this->load->view('catalog', $this->data);
 	}
 }
