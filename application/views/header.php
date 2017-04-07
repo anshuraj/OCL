@@ -25,9 +25,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li><a href="#">About</a></li>
           <li><a href="<?php echo site_url("catalog"); ?>">Catalog</a></li>
           <?php if ($this->session->userdata('user_id')){
+            if($this->session->userdata('user_type') == 1)
+              $dash = site_url('dashboard');
+            else if($this->session->userdata('user_type') == 2)
+              $dash = site_url('teacher');
+            else if($this->session->userdata('user_type') == 3)
+              $dash = site_url('admin');
+
             echo '<div class="dropdown">
                     <button class="dropbtn"><small><span class="glyphicon glyphicon-user"></span></small>  '. $this->session->userdata('name') .'</button>
                     <div class="dropdown-content">
+                      <a href="'.$dash.'">Dashboard</a>
                       <a href="#">Profile</a>
                       <a href="'.site_url('account/logout').'">Logout</a>
                     </div>
