@@ -22,6 +22,7 @@
 						</video>
 					</div>
 				</div>
+				<a href="<?php echo site_url('forum'); ?>">Have a query? Post in the forums.</a>
 			</div>
 		</div>
 	</div>
