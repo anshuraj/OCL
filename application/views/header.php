@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <button class="dropbtn"><small><span class="glyphicon glyphicon-user"></span></small>  '. $this->session->userdata('name') .'</button>
                     <div class="dropdown-content">
                       <a href="'.$dash.'">Dashboard</a>
-                      <a href="#">Profile</a>
+                      <a href="'.site_url('profile').'">Profile</a>
                       <a href="'.site_url('account/logout').'">Logout</a>
                     </div>
                   </div>';

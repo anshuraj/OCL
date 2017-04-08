@@ -72,5 +72,8 @@ $route['forum/thread/(:num)'] = 'forum/thread/index/$1';
 $route['forum/new'] = 'forum/create';
 $route['forum/new/createthread'] = 'forum/create/createThread';
 
+$route['profile'] = 'profile';
+$route['profile/changepass'] = 'profile/changePassword';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
