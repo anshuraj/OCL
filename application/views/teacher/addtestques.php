@@ -85,11 +85,13 @@
                 console.log(response);
         		if(response.status == 1){
         			$("#data").append('<div class="panel panel-default">  <div class="panel-body"> '+ $("#question").val() + '</div></div>');
+        			$('form')[0].reset();
+        			$('#form-div').hide();
+
         		} else if(response.status == 0){
         			$("#err").html(response.message);
         			$("#err").show();
         		}
-                
             } 
         }); 
     });
