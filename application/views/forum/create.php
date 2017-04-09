@@ -18,6 +18,7 @@
         </div>
     </div>
 </div>
+<script src='<?php echo site_url("public/bootstrap/js/jquery.js"); ?>'></script>
 <script>
 	$(function () {
     $('form').submit(function (e) {
