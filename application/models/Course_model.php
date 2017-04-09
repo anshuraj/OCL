@@ -50,6 +50,17 @@ class Course_model extends CI_Model {
         }
         return FALSE;
     }
+
+    public function getLessons($id){
+
+        $query = $this->db->get_where('lesson', array('course_id'=> $id));
+        if($query->num_rows()>0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+
+    }
     
     public function enroll($data){
 

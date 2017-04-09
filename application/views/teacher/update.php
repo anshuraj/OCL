@@ -4,13 +4,19 @@
 	<div class="container">
 
 	<button class="btn btn-default" id="add-lesson">Add Lesson</button>
-			<button class="btn btn-default">Add Test</button>
+			<button class="btn btn-default" id="add-test">Add Test</button>
 			<button class="btn btn-default">Add Assignment</button>
 
-		<div id="form-container"></div>
+		<div id="data">
+			<?php for($i=0; $i<sizeof($lesson); $i++){
+					echo '<div class="panel panel-default">  <div class="panel-body">Lesson '.($i+1).': '.$lesson[$i]['name'].'</div></div>';
+					}
+				for($i=0; $i<sizeof($tests); $i++){
+					echo '<div class="panel panel-default">  <div class="panel-body">Test '.($i+1).': '.$tests[$i]['title'].'<a href="'.site_url('teacher/update/addtestques/'.$tests[$i]['id']).'"><button class="btn btn-default" id="add-question-btn" style="float: right;">Add questions</button></a></div>  <div class="panel-footer"></div>  </div>';
+				} ?>
+		</div>
 		<div class="well" style="display:none;" id="well-form">
 			<div>
-			<!-- <?php echo form_open('teacher/update/upload', 'id="form-upload"'); ?> -->
 
 			<form action="<?php echo base_url('teacher/update/upload'); ?>" method="POST" id="form-upload">
 				<div class="form-group">
@@ -31,7 +37,6 @@
 
                 <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove"></i> Remove</a>
 
-                <!-- <a href="#" id="upload-btn" class="input-group-addon btn btn-success fileinput-exists"><i class="glyphicon glyphicon-open"></i> Upload</a> -->
               </div>
 
               <input type="hidden" name="course_id" value="<?php echo $course_id; ?>">
@@ -50,6 +55,38 @@
             </div>
 
 		</div>
+
+
+		<div id="test" style="display: none;">
+			<div class="panel panel-primary">
+		    	<div class="panel-heading">Add a test</div>
+		    	<div class="panel-body">
+		    		<form class="form-horizontal" action="<?php echo base_url('teacher/update/addtest'); ?>" method="POST" id="form-test">
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="title">New test:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="title" placeholder="Enter a title" name="title">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="desc">Description:</label>
+					    <div class="col-sm-10">
+					      <input type="textarea" class="form-control" id="desc" placeholder="Test description" name="desc">
+					    </div>
+					  </div>
+              			<input type="hidden" name="course_id" value="<?php echo $course_id; ?>">
+						
+					  <div class="form-group"> 
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default">Save</button>
+					    </div>
+					  </div>
+					</form>
+		      	</div>
+		      	<div class="panel-footer">Add</div>
+		    </div>
+		</div>
+
 	</div>
 
 <script type="text/javascript" src="<?php echo site_url("public/bootstrap/js/jquery.js"); ?>"></script>
@@ -58,10 +95,16 @@
 <script type="text/javascript">
 	$("#add-lesson").click(function(){
 		$("#well-form").fadeIn();
-});
+	});
 </script>
-
+<script type="text/javascript">
+	$("#add-test").click(function(){
+		$("#test").toggle();
+	});
+</script>
 <script src="<?php echo base_url(); ?>public/js/upload.js"></script>   
+<script src="<?php echo base_url(); ?>public/js/test.js"></script>   
+
 
 
 </body>

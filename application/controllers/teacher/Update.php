@@ -12,6 +12,7 @@ class Update extends CI_Controller {
         $this->output->set_content_type('application_json');     
        
 		$this->load->model('course_model');
+		$this->load->model('test_model');
 
 	}
 
@@ -19,6 +20,8 @@ class Update extends CI_Controller {
 
 		$this->data['course_id'] = $id;	
 		$this->data['custom_css'] = array();
+		$this->data['lesson'] = $this->course_model->getLessons($id);
+		$this->data['tests'] = $this->test_model->getTests($id);
 
 		if($this->session->userdata('user_id')){
 
@@ -76,5 +79,42 @@ class Update extends CI_Controller {
 
 		$this->output->set_output(json_encode($response));
 		
+	}
+
+	public function addTest(){
+
+		$this->form_validation->set_rules('title', 'title', 'trim|required');
+        $this->form_validation->set_rules('desc', 'Description', 'trim|required');
+        $this->form_validation->set_rules('course_id', 'Course id', 'trim|required');
+
+		if($this->form_validation->run()===FALSE){
+            $response = ['status'=>0, 'message'=> $this->form_validation->error_string() ];
+			$this->output->set_output(json_encode($response));
+
+            return;
+        }
+
+		$title =  $this->input->post('title');
+		$desc =  $this->input->post('desc');
+		$course_id = $this->input->post('course_id');
+
+		$data = ['title'=> $title, 'description'=> $desc, 'course_id'=> $course_id];
+
+		$res = $this->test_model->addTest($data);
+
+		if($res == TRUE){
+
+				$this->output->set_output(json_encode([
+		            'status'=>1,
+		            'message'=> 'success',
+		            'data'=> $res
+		        ]));
+
+			} else {
+				$this->output->set_output(json_encode([
+		            'status'=> 0,
+		            'message'=> 'failed'
+		        ]));
+		    }
 	}
 }

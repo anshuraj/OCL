@@ -65,6 +65,11 @@ $route['teacher/create'] = 'teacher/create';
 $route['teacher/createCourse'] = 'teacher/create/createCourse';
 $route['teacher/update/(:num)'] = 'teacher/update/index/$1';
 $route['teacher/update/upload'] = 'teacher/update/upload';
+$route['teacher/update/addtest'] = 'teacher/update/addTest';
+$route['teacher/update/addtestques/(:num)'] = 'teacher/addtestques/index/$1';
+$route['teacher/update/addtestques/add'] = 'teacher/addtestques/add';
+
+
 
 $route['forum'] = 'forum/discuss';
 $route['forum/thread/reply'] = 'forum/thread/reply';
