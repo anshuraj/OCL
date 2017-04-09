@@ -72,7 +72,7 @@ class Addtestques extends CI_Controller {
 
 			$res2 = $this->test_model->addAnswers($answersData);
 
-			$correctAnsData = ['test_id'=> $test_id, 'question_id'=> $question_id, 'answer_id'=>$res2];
+			$correctAnsData = ['test_id'=> $test_id, 'question_id'=> $question_id, 'answer_id'=>($res2+($correct-1))];
 
 			$res3 = $this->test_model->addCorrectAnswer($correctAnsData);
 

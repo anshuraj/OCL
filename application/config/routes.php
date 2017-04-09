@@ -59,6 +59,7 @@ $route['course/(:num)'] = 'Course/index/$1';
 $route['course/enroll'] = 'Course/enroll';
 $route['dashboard'] = 'Dashboard';
 $route['classroom/(:num)/(:num)'] = 'Classroom/index/$1/$2';
+$route['classroom/test/(:num)'] = 'Test/index/$1';
 
 $route['teacher'] = 'teacher/dashboard';
 $route['teacher/create'] = 'teacher/create';

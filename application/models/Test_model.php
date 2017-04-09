@@ -55,13 +55,34 @@ class Test_model extends CI_Model {
         return FALSE;
     }
 
-    public function getQuestions($id){
+    public function getQuestions($tid){
 
-        $query = $this->db->get_where('test_questions', array('test_id'=> $id));
+        $query = $this->db->get_where('test_questions', array('test_id'=> $tid));
         if($query->num_rows()>0){
             return $query->result_array();
         } else {
             return FALSE;
         }
+    }
+
+    public function getAnswers($tid){
+
+        $query = $this->db->get_where('test_answers', array('test_id'=> $tid));
+        if($query->num_rows()>0){
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function getCorrectAnswers($id){
+
+        $sql = 'SELECT test_answers.id, test_answers.question_id, test_answers.content from test_answers join test_correct_answer on test_correct_answer.answer_id = test_answers.id WHERE test_answers.test_id = ?';
+
+        $query = $this->db->query($sql, $id);
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }
+        return FALSE;
     }
 }
