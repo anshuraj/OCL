@@ -2,7 +2,9 @@
 		<h2><?php echo $course['course_name'];   ?></h2>
 		
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-2">
+				Lectures
+				<hr>
 				<?php 
 				echo '<li>';
 				for ($i=0; $i < sizeof($lesson) ; $i++) { 
@@ -11,11 +13,11 @@
 				echo '</li>'; ?>
 				
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-heading"><?php echo $lesson[$lid]['name']; ?></div>
 					<div class="panel-body">
-						<video width="640" height="360" controls>
+						<video width="640" height="360" controls style="width: 100%; height: auto;">
 						  <?php 
 						  	echo '<source src="'. site_url('uploads/'.$lesson[$lid]['content']) .'" type="video/mp4">'
 						  ?>
@@ -23,6 +25,13 @@
 					</div>
 				</div>
 				<a href="<?php echo site_url('forum'); ?>">Have a query? Post in the forums.</a>
+			</div>
+			<div class="col-md-2">
+				Available tests<br><hr>
+				<?php 
+				for($i=0; $i<sizeof($tests); $i++){
+					echo '<a href="'.site_url('classroom/test/'.$tests[$i]['id']).'">'.$tests[$i]['title'].'</a>';
+					} ?>
 			</div>
 		</div>
 	</div>
