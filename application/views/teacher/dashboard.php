@@ -12,9 +12,7 @@
 					    <tbody>
 					      <tr>
 					        <td><a href="'.site_url('classroom/'.$courses[$i]['id'].'/0').'">'.$courses[$i]['name'].'</a></td>
-					        <td>Grade</td>
 					        <td><a href="'.site_url('teacher/update/'.$courses[$i]['id']).'">Update</a></td>
-					        <td>Remove</td>
 					      </tr>
 					    </tbody>
 					  ';

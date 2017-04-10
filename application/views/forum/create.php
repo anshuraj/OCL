@@ -35,7 +35,7 @@
                 console.log(response);
                 if(response.status == 1){
 
-                  //window.location.href = '<?php echo site_url(""); ?>'+response.course_id;
+                  window.location.href = '<?php echo site_url("forum/thread/"); ?>'+response.course_id;
 
                 } else if(response.status == 0){
 

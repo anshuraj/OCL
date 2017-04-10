@@ -81,6 +81,10 @@
 
                   window.location.href = "<?php echo site_url("teacher/dashboard"); ?>";
 
+                } else if(response.status == 1 && response.user_type == 3){
+
+                  window.location.href = "<?php echo site_url("admin"); ?>";
+
                 } else if(response.status == 0){
 
                   alert('Incorrect email or password!');

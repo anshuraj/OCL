@@ -37,7 +37,7 @@ class Account extends CI_Controller {
 		$this->output->set_content_type('application_json');
 
 		$email = $this->input->post('email');
-		$pass = $this->input->post('password');
+		$pass = md5($this->input->post('password'));
 
 		$data = ['email'=> $email, 'password'=> $pass];
 
@@ -79,7 +79,7 @@ class Account extends CI_Controller {
 
 		$name = $this->input->post('name');
 		$email = $this->input->post('email');
-		$pass = $this->input->post('password');
+		$pass = md5($this->input->post('password'));
 		$user_type = $this->input->post('user_type');
 
 		$data = ['name'=> $name, 'email'=> $email, 'password'=> $pass, 'user_type'=> $user_type];
