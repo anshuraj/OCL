@@ -1,13 +1,19 @@
 <div class="container">
+	<div class="row">
+	<div class="col-sm-8">
 		<h2><?php echo $course['course_name'];   ?></h2>
-		
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-default" style="float: right; margin: 20px;" ><a href="<?php echo site_url('report/'.$course['course_id']); ?>">Report</a></button>
+	</div>
+	</div>
 		<div class="row">
 			<div class="col-md-2 lectures">
 				Lectures
 				<hr>
 				<?php 
 				echo '<li>';
-				for ($i=0; $i < sizeof($lesson) ; $i++) { 
+				if($lesson != Null) for ($i=0; $i < sizeof($lesson) ; $i++) { 
 					echo '<ul><a href="'. site_url('classroom/'.$lesson[$i]['course_id'].'/'.$i) .'"><button class="btn list-button">'.$lesson[$i]['name'].'</button></a></ul>';
 				}
 				echo '</li>'; ?>
@@ -29,12 +35,12 @@
 			<div class="col-md-2">
 				Available tests<br><hr>
 				<?php 
-				for($i=0; $i<sizeof($tests); $i++){
+				if($tests != Null) for($i=0; $i<sizeof($tests); $i++){
 					echo '<a href="'.site_url('classroom/test/'.$tests[$i]['id']).'"><button class="btn list-button">'.$tests[$i]['title'].'</button></a>';
 					} ?>
 				<br><hr>
 				Available assignments
-				<?php for($i=0; $i<sizeof($assignments); $i++){
+				<?php if($assignments != Null) for($i=0; $i<sizeof($assignments); $i++){
 					echo '<a href="'.site_url('classroom/assign/'.$assignments[$i]['id']).'"><button class="btn list-button">'.$assignments[$i]['name'].'</button></a>';
 					} ?>
 			</div>

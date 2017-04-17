@@ -131,4 +131,24 @@ class Test_model extends CI_Model {
             return FALSE;
         }
     }
+
+    public function saveTestScore($data){
+
+        $query = $this->db->insert('test_scores', $data);
+        if($this->db->insert_id()){
+            return $this->db->insert_id();
+        }
+        return FALSE;
+    }
+
+    public function getTestScores($tid, $sid){
+
+        $sql = 'SELECT test_scores.id, tests.title , test_scores.score, test_scores.max_marks, test_scores.time from test_scores join tests on test_scores.id = test_scores.test_id where test_scores.id = ? AND test_scores.student_id = ?';
+        
+        $query = $this->db->query($sql, array($tid, $sid));
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }
+        return FALSE;
+    }
 }

@@ -22,6 +22,7 @@
 <script src='<?php echo site_url("public/bootstrap/js/jquery.js"); ?>'></script>
 <script>
 var q = JSON.parse('<?php echo json_encode($correct); ?>');
+var score;
 	function check(){
 		var count = 0;
 		for(var i=0; i<q.length; i++){ 
@@ -32,11 +33,25 @@ var q = JSON.parse('<?php echo json_encode($correct); ?>');
 		$("#result").html("You scored " + count + " out of " + q.length + '<p><button class="btn btn-default" id="retry"}">Retry</button>');
 		$("#test-data").hide();
 		$("#result").slideDown("slow");
+		score = count;
+		save();
 	}
 	$("#result").on("click", "#retry", function(){
   		$("#result").slideUp("slow");
   		$("#test-data").slideDown("slow");
 	});
+	function save(){
+		$.ajax({
+			url: '<?php echo site_url('classroom/test/save'); ?>' ,
+			type: 'POST',
+			data: {'score': score, 'test_id': <?php echo $tests[0]['id']; ?> , 'course_id': <?php echo $tests[0]['id']; ?> , 'max_marks': q.length} ,
+			success: function(response){
+				//var response = JSON.parse(response);
+				console.log(response);
+
+			}
+		});
+	}
 </script>
 
 </body>

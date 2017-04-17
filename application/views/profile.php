@@ -47,7 +47,7 @@
 				<div class="panel-body">';
 					echo '<ul>'; 
 						for($i=0; $i<sizeof($courses); $i++){
-							echo '<li>'. $courses[$i]['name'] .'<a style="float: right;" class="delete" id="'.$courses[$i]['id'].'" href="'. site_url('profile/remove/'). $courses[$i]['id'] .'">Remove</a>';
+							echo '<li><div class="col-md-5">'. $courses[$i]['name'] .'</div><div class="col-md-3"><a href="'.site_url('report/'.$courses[$i]['id']).'">Report</a></div><div class="col-md-4"><a style="float: right;" class="delete" id="'.$courses[$i]['id'].'" href="'. site_url('profile/remove/'). $courses[$i]['id'] .'">Remove</a></div>';
 						} 
 					echo '<ul>'; 
 				echo '</div> 
