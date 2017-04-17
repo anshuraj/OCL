@@ -22,6 +22,7 @@ class Update extends CI_Controller {
 		$this->data['custom_css'] = array();
 		$this->data['lesson'] = $this->course_model->getLessons($id);
 		$this->data['tests'] = $this->test_model->getTests($id);
+		$this->data['assignments'] = $this->test_model->getAssignments($id);
 
 		if($this->session->userdata('user_id')){
 
@@ -53,7 +54,7 @@ class Update extends CI_Controller {
 		if ( ! empty($_FILES))
 		{
 			$config['upload_path'] = "./uploads";
-			$config['allowed_types'] = 'gif|jpg|png|mp4|ogv|zip';
+			$config['allowed_types'] = 'mp4|flv|mov';
 
 			$this->load->library('upload', $config);
 			if (! $this->upload->do_upload("file")) {
@@ -101,6 +102,43 @@ class Update extends CI_Controller {
 		$data = ['title'=> $title, 'description'=> $desc, 'course_id'=> $course_id];
 
 		$res = $this->test_model->addTest($data);
+
+		if($res == TRUE){
+
+				$this->output->set_output(json_encode([
+		            'status'=>1,
+		            'message'=> 'success',
+		            'data'=> $res
+		        ]));
+
+			} else {
+				$this->output->set_output(json_encode([
+		            'status'=> 0,
+		            'message'=> 'failed'
+		        ]));
+		    }
+	}
+
+	public function addAssign(){
+
+		$this->form_validation->set_rules('assign', 'Assignment', 'trim|required');
+        $this->form_validation->set_rules('descrip', 'Description', 'trim|required');
+        $this->form_validation->set_rules('course_id', 'Course id', 'trim|required');
+
+		if($this->form_validation->run()===FALSE){
+            $response = ['status'=>0, 'message'=> $this->form_validation->error_string() ];
+			$this->output->set_output(json_encode($response));
+
+            return;
+        }
+
+		$assign =  $this->input->post('assign');
+		$descrip =  $this->input->post('descrip');
+		$course_id = $this->input->post('course_id');
+
+		$data = ['name'=> $assign, 'description'=> $descrip, 'course_id'=> $course_id];
+
+		$res = $this->test_model->addAssign($data);
 
 		if($res == TRUE){
 

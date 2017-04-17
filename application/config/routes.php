@@ -60,6 +60,7 @@ $route['course/enroll'] = 'Course/enroll';
 $route['dashboard'] = 'Dashboard';
 $route['classroom/(:num)/(:num)'] = 'Classroom/index/$1/$2';
 $route['classroom/test/(:num)'] = 'Test/index/$1';
+$route['classroom/assign/(:num)'] = 'Assign/index/$1';
 
 $route['teacher'] = 'teacher/dashboard';
 $route['teacher/create'] = 'teacher/create';
@@ -69,7 +70,9 @@ $route['teacher/update/upload'] = 'teacher/update/upload';
 $route['teacher/update/addtest'] = 'teacher/update/addTest';
 $route['teacher/update/addtestques/(:num)'] = 'teacher/addtestques/index/$1';
 $route['teacher/update/addtestques/add'] = 'teacher/addtestques/add';
-
+$route['teacher/update/addassign'] = 'teacher/update/addAssign';
+$route['teacher/update/addassignques/(:num)'] = 'teacher/addassignques/index/$1';
+$route['teacher/update/addassignques/add'] = 'teacher/addassignques/add';
 
 
 $route['forum'] = 'forum/discuss';
@@ -80,7 +83,8 @@ $route['forum/new/createthread'] = 'forum/create/createThread';
 
 $route['profile'] = 'profile';
 $route['profile/changepass'] = 'profile/changePassword';
-
+$route['profile/remove/(:num)'] = 'profile/removeEnrollment/$1';
+ 
 $route['admin'] = 'admin';
 $route['admin/createteacher'] = 'Admin/createTeacherAccount';
 

@@ -12,7 +12,7 @@
           <h3>Sign Up for Free</h3>
           
           <form action="<?php echo site_url("account/signup"); ?>" method="post" id="signup-form">
-
+          <p style="display: none; color: white;" id="err"></p>
           <div class="field-wrap">
               <input type="text"required autocomplete="off" placeholder="Name" name="name" />
             </div>
@@ -24,6 +24,10 @@
           <div class="field-wrap">
             <input type="password"required autocomplete="off" placeholder="Password" name="password" />
           </div>
+          <div class="field-wrap">
+            <input type="password"required autocomplete="off" placeholder="Confirm Password" name="cnfPass" />
+          </div>
+
             <input type="hidden" name="user_type" value="1" />
           
           <button type="submit" class="button button-block"/>Get Started</button>
@@ -37,6 +41,7 @@
           
           <form action="<?php echo site_url("account/login"); ?>" method="post" id="login-form">
           
+          <p style="display: none; color: white;" id="err-login"></p>
             <div class="field-wrap">
               <input type="email"required autocomplete="off" placeholder="Email" name="email" />
             </div>
@@ -63,6 +68,7 @@
   $(function () {
     $('#login-form').submit(function (e) {
         e.preventDefault();
+        $("#err-login").hide();
         var postData = $(this).serialize();
         var url = $(this).attr('action');
 
@@ -87,7 +93,8 @@
 
                 } else if(response.status == 0){
 
-                  alert('Incorrect email or password!');
+                  $("#err-login").html("Incorrect Email or Password!!");
+                  $("#err-login").show();
                 }
             } 
         });
@@ -97,6 +104,7 @@
   $(function () {
     $('#signup-form').submit(function (e) {
         e.preventDefault();
+        $("#err").hide();
         var postData = $(this).serialize();
         var url = $(this).attr('action');
 
@@ -105,7 +113,14 @@
             type: 'POST',
             data: postData,
             success: function (response) {
+              var response = JSON.parse(response);
                 console.log(response);
+                if(response.status == 1){
+                  alert("User registered successfully");
+                } else { 
+                  $("#err").html(response.message);
+                  $("#err").show();
+                }
                 
             } 
         }); 

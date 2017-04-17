@@ -11,6 +11,7 @@ class Profile extends CI_Controller {
         $this->output->set_header("Pragma: no-cache");   
         $this->output->set_content_type('application_json');     
 		$this->load->model('profile_model');
+        $this->load->model('course_model');
 
 	}
 
@@ -18,6 +19,7 @@ class Profile extends CI_Controller {
 		
 		$this->data['custom_css'] = array();
 		$this->data['profile'] = $this->profile_model->getUserData($this->session->userdata('user_id'));
+		$this->data['courses'] = $this->course_model->getEnrolledCourses($this->session->userdata('user_id')) ;
 
 		$this->load->view('header', $this->data);
 		$this->load->view('profile', $this->data);
@@ -55,8 +57,26 @@ class Profile extends CI_Controller {
 		$res = $this->profile_model->changePassword($data, $this->session->userdata('user_id'));
 
 		if($res == TRUE){
-			$this->session->set_userdata($data);
 				$this->output->set_output(json_encode([
+		            'status'=>1,
+		            'message'=> 'Success'
+		        ]));
+			} else {
+				$this->output->set_output(json_encode([
+		            'status'=> 0,
+		            'message'=> 'Failed'
+		        ]));
+		    }
+	}
+
+	public function removeEnrollment($cid){
+
+		$sid = $this->session->userdata('user_id');
+
+		$res = $this->profile_model->removeEnrollment($cid, $sid);
+
+		if($res == TRUE){
+			$this->output->set_output(json_encode([
 		            'status'=>1,
 		            'message'=> 'Success'
 		        ]));

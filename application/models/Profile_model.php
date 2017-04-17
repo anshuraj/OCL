@@ -24,4 +24,14 @@ class Profile_model extends CI_Model {
         return FALSE;
         
     }
+
+    public function removeEnrollment($cid, $sid){
+
+        $query = $this->db->delete('enrollment', array('course_id'=> $cid, 'student_id'=>$sid) );
+        
+        if($this->db->affected_rows()){
+            return TRUE;
+        }
+        return FALSE;
+    }
 }

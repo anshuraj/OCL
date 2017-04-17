@@ -1,0 +1,23 @@
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+	list-style: none;
+}
+
+.list-button {
+
+	width: 100%;	
+	border-radius: 0px;
+}
+
+.lectures {
+	border: 1px #ddd;
+	display: block;
+}
+
+#text-lecture {
+	text-align: center;
+}

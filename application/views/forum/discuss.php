@@ -1,7 +1,7 @@
 <div class="container">
 	<h2>Forums</h2>
 	<a href="<?php echo site_url('forum/new'); ?>"><button  class="btn btn-primary">Ask a question</button></a>
-	<br>
+	<hr>
 	<div class="row">
 	<?php for($i=0; $i<sizeof($threads); $i++) {
 

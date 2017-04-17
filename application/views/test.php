@@ -5,7 +5,7 @@
 	</div>
 	<div class="well" id="test-data">
 		<div class="container">
-			<?php for($i=0; $i<sizeof($questions); $i++){
+			<?php if($questions != Null) for($i=0; $i<sizeof($questions); $i++){
 				echo '<p><h3>'. ($i+1) . '. ' . $questions[$i]['question'].'</h3></p>';
 
 				for($j=0; $j<sizeof($answers); $j++){
@@ -13,7 +13,7 @@
 						echo '<p><input type="radio" name="'.$i.'" value="'.$answers[$j]['content'].'"> '.$answers[$j]['content'].'</p>';
 				}
 
-			} ?>
+			} else echo 'No questions available at this time. Please try again later.' ?>
 		</div>
 		<button type="button" class="btn btn-primary" onclick="check()">Check</button>
 	</div>

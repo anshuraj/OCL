@@ -2,13 +2,13 @@
 		<h2><?php echo $course['course_name'];   ?></h2>
 		
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-2 lectures">
 				Lectures
 				<hr>
 				<?php 
 				echo '<li>';
 				for ($i=0; $i < sizeof($lesson) ; $i++) { 
-					echo '<ul><a href="'. site_url('classroom/'.$lesson[$i]['course_id'].'/'.$i) .'">'.$lesson[$i]['name'].'</a></ul>';
+					echo '<ul><a href="'. site_url('classroom/'.$lesson[$i]['course_id'].'/'.$i) .'"><button class="btn list-button">'.$lesson[$i]['name'].'</button></a></ul>';
 				}
 				echo '</li>'; ?>
 				
@@ -30,7 +30,12 @@
 				Available tests<br><hr>
 				<?php 
 				for($i=0; $i<sizeof($tests); $i++){
-					echo '<a href="'.site_url('classroom/test/'.$tests[$i]['id']).'">'.$tests[$i]['title'].'</a>';
+					echo '<a href="'.site_url('classroom/test/'.$tests[$i]['id']).'"><button class="btn list-button">'.$tests[$i]['title'].'</button></a>';
+					} ?>
+				<br><hr>
+				Available assignments
+				<?php for($i=0; $i<sizeof($assignments); $i++){
+					echo '<a href="'.site_url('classroom/assign/'.$assignments[$i]['id']).'"><button class="btn list-button">'.$assignments[$i]['name'].'</button></a>';
 					} ?>
 			</div>
 		</div>

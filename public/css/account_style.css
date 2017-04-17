@@ -7,13 +7,13 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  background: whitesmoke;
   font-family: 'Titillium Web', sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: #1ab188;
+  color: #b1a41a;
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
@@ -22,7 +22,7 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
+  background: rgba(6, 46, 76, 0.9);
   padding: 40px;
   max-width: 400px;
   margin: 40px auto;
@@ -44,8 +44,8 @@ a:hover {
   display: block;
   text-decoration: none;
   padding: 15px;
-  background: rgba(160, 179, 176, 0.25);
-  color: #a0b3b0;
+  background: rgba(15, 179, 17, 0.25);
+  color: #c3b51c;
   //font-size: 20px;
   float: left;
   width: 50%;
@@ -55,11 +55,11 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #179b77;
+  background: #c3b51c;
   color: #ffffff;
 }
 .tab-group .active a {
-  background: #1ab188;
+  background: #948809;
   color: #ffffff;
 }
 
@@ -143,7 +143,7 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #1ab188;
+  background: #948809;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;

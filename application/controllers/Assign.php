@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Classroom extends CI_Controller {
+class Assign extends CI_Controller {
 
 	public function __construct(){
 
@@ -10,25 +10,19 @@ class Classroom extends CI_Controller {
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");   
 
-		$this->load->model('classroom_model');
-		$this->load->model('course_model');
 		$this->load->model('test_model');
-
 	}
 
-	public function index($cid=Null, $lid=0){
+	public function index($id=Null){
 
-		$this->data['custom_css'] = array('classroom.css');
+		$this->data['custom_css'] = array();
 		
-		$this->data['lesson'] = $this->classroom_model->getLesson($cid);
-		$this->data['course'] = $this->course_model->getCourseData($cid);
-		$this->data['tests'] = $this->test_model->getTests($cid);
-		$this->data['assignments'] = $this->test_model->getAssignments($cid);
-		$this->data['lid'] = $lid;
+		$this->data['questions'] = $this->test_model->getAssignQuestions($id);
+		$this->data['assign'] = $this->test_model->getAssign($id);
 		
 		if($this->session->userdata('user_id')){
 			$this->load->view('header', $this->data);
-			$this->load->view('classroom', $this->data);
+			$this->load->view('assign', $this->data);
 		} else {
 			header('Refresh:3;'. site_url('account'));
 			echo 'Please Login to continue. Redirecting...';

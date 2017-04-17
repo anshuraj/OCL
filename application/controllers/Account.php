@@ -65,13 +65,14 @@ class Account extends CI_Controller {
 
         $this->form_validation->set_rules('name', 'name', 'trim|required');
         $this->form_validation->set_rules('email', 'Email address', 'trim|required|valid_email|is_unique[users.email]');
-        $this->form_validation->set_rules('password', 'password', 'trim|required');
+        $this->form_validation->set_rules('password', 'password', 'trim|required|matches[cnfPass]');
+        $this->form_validation->set_rules('cnfPass', 'Confirm password', 'trim|required');
         $this->form_validation->set_rules('user_type', 'user_type', 'required');
 
         if($this->form_validation->run()===FALSE){
                 $this->output->set_output(json_encode([
                     'status'=>0,
-                    'message'=> $this->form_validation->error_array()
+                    'message'=> $this->form_validation->error_string()
                 ]));
                 return;
         }

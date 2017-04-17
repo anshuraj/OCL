@@ -1,6 +1,7 @@
 <div class="container">
+	<hr>
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6">
 			<div class="panel panel-info">
 				<div class="panel-heading"> 
 					<h3 class="panel-title">Basic Information</h3> 
@@ -37,6 +38,22 @@
 				</div> 
 	</div>
 		</div>
+<?php if($this->session->userdata('user_type') == 1) {
+	echo '<div class="col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading"> 
+					<h3 class="panel-title">Enrolled courses</h3> 
+				</div>
+				<div class="panel-body">';
+					echo '<ul>'; 
+						for($i=0; $i<sizeof($courses); $i++){
+							echo '<li>'. $courses[$i]['name'] .'<a style="float: right;" class="delete" id="'.$courses[$i]['id'].'" href="'. site_url('profile/remove/'). $courses[$i]['id'] .'">Remove</a>';
+						} 
+					echo '<ul>'; 
+				echo '</div> 
+			</div>
+		</div>'; } ?>
+
 	</div>
 </div>
 <script src='<?php echo site_url("public/bootstrap/js/jquery.js"); ?>'></script>
@@ -65,6 +82,33 @@
         });
     });
   });
+</script>
+<script>
+	$(function(){
+    $(document).on('click', '.delete', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('id');
+        console.log(id);
+        var url=$(this).attr('href');
+        $.ajax({
+            url:url,
+            type:'POST',
+            
+            success: function(response){
+				var response = JSON.parse(response);
+	          if(response.status==1) {
+	            //success
+	            $('#'+id).parent().remove();
+	             
+	          }              
+	          else if(response.status == 0){    
+	          	alert(response.message);
+	          }
+            }
+        });
+      });
+    }); 
+
 </script>
 </body>
 </html>

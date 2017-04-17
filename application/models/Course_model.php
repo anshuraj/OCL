@@ -86,7 +86,7 @@ class Course_model extends CI_Model {
 
     public function getEnrolledCourses($id){
 
-        $sql = 'SELECT courses.id, courses.description, courses.name from courses JOIN enrollment on courses.id = enrollment.course_id where enrollment.student_id = ?';
+        $sql = 'SELECT courses.id, courses.description, courses.name from courses JOIN enrollment on courses.id = enrollment.course_id where enrollment.student_id = ? order by enrollment.time DESC';
 
         $query = $this->db->query($sql, $id);
         

@@ -3,18 +3,24 @@
 <body>
 	<div class="container">
 
-	<button class="btn btn-default" id="add-lesson">Add Lesson</button>
-			<button class="btn btn-default" id="add-test">Add Test</button>
-			<button class="btn btn-default">Add Assignment</button>
+	<hr>
 
-		<div id="data">
-			<?php for($i=0; $i<sizeof($lesson); $i++){
-					echo '<div class="panel panel-default">  <div class="panel-body">Lesson '.($i+1).': '.$lesson[$i]['name'].'</div></div>';
-					}
-				for($i=0; $i<sizeof($tests); $i++){
-					echo '<div class="panel panel-default">  <div class="panel-body">Test '.($i+1).': '.$tests[$i]['title'].'<a href="'.site_url('teacher/update/addtestques/'.$tests[$i]['id']).'"><button class="btn btn-default" id="add-question-btn" style="float: right;">Add questions</button></a></div>  <div class="panel-footer"></div>  </div>';
-				} ?>
-		</div>
+	<button class="btn btn-default" id="add-lesson">Add Lesson</button>
+	<button class="btn btn-default" id="add-test">Add Test</button>
+	<button class="btn btn-default" id="add-assign">Add Assignment</button>
+	<hr>
+
+	<div id="data">
+		<?php if($lesson != Null) for($i=0; $i<sizeof($lesson); $i++){
+				echo '<div class="panel panel-default">  <div class="panel-body">Lesson '.($i+1).': '.$lesson[$i]['name'].'</div></div>';
+				}
+			if($tests != Null) for($i=0; $i<sizeof($tests); $i++){
+				echo '<div class="panel panel-default">  <div class="panel-body">Test '.($i+1).': '.$tests[$i]['title'].'<a href="'.site_url('teacher/update/addtestques/'.$tests[$i]['id']).'"><button class="btn btn-default" id="add-question-btn" style="float: right;">Add questions</button></a></div></div>';
+			}
+			if($assignments != Null) for($i=0; $i<sizeof($assignments); $i++){
+				echo '<div class="panel panel-default">  <div class="panel-body">Assignments '.($i+1).': '.$assignments[$i]['name'].'<a href="'.site_url('teacher/update/addassignques/'.$assignments[$i]['id']).'"><button class="btn btn-default" id="add-question-btn" style="float: right;">Add questions</button></a></div></div>';
+			} ?>
+	</div>
 		<div class="well" style="display:none;" id="well-form">
 			<div>
 
@@ -83,7 +89,35 @@
 					  </div>
 					</form>
 		      	</div>
-		      	<div class="panel-footer">Add</div>
+		    </div>
+		</div>
+
+		<div id="assign" style="display: none;">
+			<div class="panel panel-primary">
+		    	<div class="panel-heading">Add a assignment</div>
+		    	<div class="panel-body">
+		    		<form class="form-horizontal" action="<?php echo base_url('teacher/update/addassign'); ?>" method="POST" id="form-assign">
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="assign">New assign:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="assign" placeholder="Enter a assignment" name="assign">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="control-label col-sm-2" for="descrip">Description:</label>
+					    <div class="col-sm-10">
+					      <input type="textarea" class="form-control" id="descrip" placeholder="Assignment description" name="descrip">
+					    </div>
+					  </div>
+              			<input type="hidden" name="course_id" value="<?php echo $course_id; ?>">
+						
+					  <div class="form-group"> 
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default">Save</button>
+					    </div>
+					  </div>
+					</form>
+		      	</div>
 		    </div>
 		</div>
 
@@ -102,8 +136,14 @@
 		$("#test").toggle();
 	});
 </script>
+<script type="text/javascript">
+	$("#add-assign").click(function(){
+		$("#assign").toggle();
+	});
+</script>
 <script src="<?php echo base_url(); ?>public/js/upload.js"></script>   
-<script src="<?php echo base_url(); ?>public/js/test.js"></script>   
+<script src="<?php echo base_url(); ?>public/js/test.js"></script>
+<script src="<?php echo base_url(); ?>public/js/assignment.js"></script>      
 
 
 

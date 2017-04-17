@@ -21,6 +21,10 @@ class Course extends CI_Controller {
 
 	public function enroll(){
 
+		$this->load->helper("date");
+
+		ini_set('date.timezone',"Asia/Calcutta");
+
 		if($this->session->userdata('user_id')){
 
 			$this->load->model('course_model');
@@ -28,7 +32,7 @@ class Course extends CI_Controller {
 			$course_id = $this->input->post('course_id');
 			$user_id = $this->session->userdata('user_id');
 			
-			$data = array('course_id'=> $course_id, 'student_id'=> $user_id);
+			$data = ['course_id'=> $course_id, 'student_id'=> $user_id, 'time'=> unix_to_human(now(), TRUE, 'us')];
 
 			$res = $this->course_model->enroll($data);
 
